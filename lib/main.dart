@@ -7,8 +7,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MyHomePage(),
+    return const MaterialApp(
+      home: MyHomePage(),
     );
   }
 }
@@ -47,13 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter API Example'),
+        title: const Text('Frankstain Proyect :v'),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -65,21 +65,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.message),
-              title: Text('Messages'),
+              title: Text('aqui'),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
+              title: Text('yace mi '),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              title: Text('cordura'),
             ),
             ListTile(
-              leading: Icon(Icons.arrow_back),
-              title: Text('Back to Main Menu'),
+              leading: const Icon(Icons.arrow_back),
+              title: const Text('Cerrar menu'),
               onTap: () {
                 Navigator.popUntil(context, ModalRoute.withName('/'));
               },
@@ -96,22 +96,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 showDialog<String>(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
-                    title: const Text('AlertDialog Title'),
-                    content: const Text('AlertDialog description'),
+                    title: const Text('ALTO ROBOT'),
+                    content: const Text('ERES UN ROBOT?'),
                     actions: <Widget>[
                       TextButton(
-                        onPressed: () => Navigator.pop(context, 'Cancel'),
-                        child: const Text('Cancel'),
+                        onPressed: () => Navigator.pop(context, 'TALVEZ xd'),
+                        child: const Text('TALVEZ xd'),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.pop(context, 'OK'),
-                        child: const Text('OK'),
+                        onPressed: () => Navigator.pop(context, 'SI'),
+                        child: const Text('SI'),
                       ),
                     ],
                   ),
                 );
               },
-              child: const Text('Show AlertDialog'),
+              child: const Text('AlertDialog'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: const Text('Show Card Example'),
+              child: const Text('Show Card '),
             ),
             ElevatedButton(
               onPressed: () {
@@ -133,13 +133,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: const Text('Show Checkbox Example'),
+              child: const Text('Checkbox '),
             ),
             ElevatedButton(
               onPressed: () {
                 _selectDate(context);
               },
-              child: const Text('Show DatePicker'),
+              child: const Text('DatePicker'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: const Text('Show Form Example'),
+              child: const Text('Form '),
             ),
             ElevatedButton(
               onPressed: () {
@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: const Text('Show ListView Example'),
+              child: const Text('ListView'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: const Text('Show Radio Example'),
+              child: const Text('Radio '),
             ),
             ElevatedButton(
               onPressed: () {
@@ -183,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: const Text('Show SingleChildScrollView Example'),
+              child: const Text('SingleChildScrollView'),
             ),
           ],
         ),
@@ -198,15 +198,15 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'En China',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Las Puertas',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'ReCHINAN ',
           ),
         ],
       ),
@@ -221,7 +221,7 @@ class CardExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Card Sample'),
+        title: const Text('Card '),
       ),
       body: Center(
         child: Card(
@@ -234,7 +234,7 @@ class CardExample extends StatelessWidget {
             child: const SizedBox(
               width: 300,
               height: 100,
-              child: Text('A card that can be tapped'),
+              child: Text('Doxeado'),
             ),
           ),
         ),
@@ -269,7 +269,7 @@ class _CheckboxExampleState extends State<CheckboxExample> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkbox Sample'),
+        title: const Text('Checkbox'),
       ),
       body: Center(
         child: Checkbox(
@@ -302,7 +302,7 @@ class _FormExampleState extends State<FormExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form Sample'),
+        title: const Text('Form'),
       ),
       body: Form(
         key: _formKey,
@@ -311,11 +311,11 @@ class _FormExampleState extends State<FormExample> {
           children: <Widget>[
             TextFormField(
               decoration: const InputDecoration(
-                hintText: 'Enter your email',
+                hintText: 'Pon cualquier cosa ',
               ),
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'QUE PONGAS ALGO UWU';
                 }
                 return null;
               },
@@ -339,7 +339,7 @@ class _FormExampleState extends State<FormExample> {
                 padding: const EdgeInsets.only(top: 16.0),
                 child: Text(
                   'Entered Email: $userEmail',
-                  style: TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 18),
                 ),
               ),
           ],
@@ -354,12 +354,12 @@ class ListViewExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> entries = <String>['A', 'B', 'C'];
+    final List<String> entries = <String>['x1', 'x2', 'x3'];
     final List<int> colorCodes = <int>[600, 500, 100];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ListView Example'),
+        title: const Text('ListView '),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(8),
@@ -368,7 +368,7 @@ class ListViewExample extends StatelessWidget {
           return Container(
             height: 50,
             color: Colors.amber[colorCodes[index]],
-            child: Center(child: Text('Entry ${entries[index]}')),
+            child: Center(child: Text('YA BASTAAA ${entries[index]}')),
           );
         },
       ),
@@ -390,12 +390,12 @@ class _RadioExampleState extends State<RadioExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Radio Sample'),
+        title: const Text('Me lo dice como amigo o como jefe?'),
       ),
       body: Column(
         children: <Widget>[
           ListTile(
-            title: const Text('Lafayette'),
+            title: const Text('Como.- Jefecito fiu fiu'),
             leading: Radio<SingingCharacter>(
               value: SingingCharacter.lafayette,
               groupValue: _character,
@@ -407,7 +407,7 @@ class _RadioExampleState extends State<RadioExample> {
             ),
           ),
           ListTile(
-            title: const Text('Thomas Jefferson'),
+            title: const Text('Como.- Pongase a trabajar '),
             leading: Radio<SingingCharacter>(
               value: SingingCharacter.jefferson,
               groupValue: _character,
@@ -447,14 +447,14 @@ class SingleChildScrollViewExample extends StatelessWidget {
                     color: const Color(0xffeeee00), // Yellow
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: const Text('Fixed Height Content'),
+                    child: const Text('Cual es el cafe mas peligroso?'),
                   ),
                   Container(
                     // Another fixed-height child.
                     color: const Color(0xff008000), // Green
                     height: 120.0,
                     alignment: Alignment.center,
-                    child: const Text('Fixed Height Content'),
+                    child: const Text('El exPRESO JSJSJSJ'),
                   ),
                 ],
               ),
