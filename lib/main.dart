@@ -20,20 +20,20 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+enum SingingCharacter { lafayette, jefferson }
+
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime now = DateTime.now();
-    final DateTime lastDate =
-        DateTime(2022, 12, 31); // Establece la fecha final deseada
+    final DateTime lastDate = DateTime(2022, 12, 31);
 
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate:
-          now.isBefore(lastDate) ? now : lastDate, // Corregir la fecha inicial
-      firstDate: DateTime(2021, 1, 1), // Establece la fecha inicial deseada
-      lastDate: lastDate, // Usa la misma fecha final
+      initialDate: now.isBefore(lastDate) ? now : lastDate,
+      firstDate: DateTime(2021, 1, 1),
+      lastDate: lastDate,
     );
 
     if (picked != null) {
@@ -77,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Icon(Icons.settings),
               title: Text('Settings'),
             ),
-            // Agrega un ListTile para volver al menú principal
             ListTile(
               leading: Icon(Icons.arrow_back),
               title: Text('Back to Main Menu'),
@@ -141,6 +140,39 @@ class _MyHomePageState extends State<MyHomePage> {
                 _selectDate(context);
               },
               child: const Text('Show DatePicker'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FormExample(),
+                  ),
+                );
+              },
+              child: const Text('Show Form Example'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ListViewExample(),
+                  ),
+                );
+              },
+              child: const Text('Show ListView Example'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RadioExample(),
+                  ),
+                );
+              },
+              child: const Text('Show Radio Example'),
             ),
           ],
         ),
@@ -239,6 +271,143 @@ class _CheckboxExampleState extends State<CheckboxExample> {
             });
           },
         ),
+      ),
+    );
+  }
+}
+
+class FormExample extends StatefulWidget {
+  const FormExample({Key? key}) : super(key: key);
+
+  @override
+  State<FormExample> createState() => _FormExampleState();
+}
+
+class _FormExampleState extends State<FormExample> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? userEmail;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Form Sample'),
+      ),
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: const InputDecoration(
+                hintText: 'Enter your email',
+              ),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+              onSaved: (String? email) {
+                userEmail = email;
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ),
+            if (userEmail != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Text(
+                  'Entered Email: $userEmail',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ListViewExample extends StatelessWidget {
+  const ListViewExample({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> entries = <String>['A', 'B', 'C'];
+    final List<int> colorCodes = <int>[600, 500, 100];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ListView Example'),
+      ),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 50,
+            color: Colors.amber[colorCodes[index]],
+            child: Center(child: Text('Entry ${entries[index]}')),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class RadioExample extends StatefulWidget {
+  const RadioExample({Key? key}) : super(key: key);
+
+  @override
+  State<RadioExample> createState() => _RadioExampleState();
+}
+
+class _RadioExampleState extends State<RadioExample> {
+  SingingCharacter? _character = SingingCharacter.lafayette;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Radio Sample'),
+      ),
+      body: Column(
+        children: <Widget>[
+          ListTile(
+            title: const Text('Lafayette'),
+            leading: Radio<SingingCharacter>(
+              value: SingingCharacter.lafayette,
+              groupValue: _character,
+              onChanged: (SingingCharacter? value) {
+                setState(() {
+                  _character = value;
+                });
+              },
+            ),
+          ),
+          ListTile(
+            title: const Text('Thomas Jefferson'),
+            leading: Radio<SingingCharacter>(
+              value: SingingCharacter.jefferson,
+              groupValue: _character,
+              onChanged: (SingingCharacter? value) {
+                setState(() {
+                  _character = value;
+                });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
