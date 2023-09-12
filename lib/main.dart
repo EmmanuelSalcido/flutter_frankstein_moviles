@@ -174,6 +174,17 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Show Radio Example'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SingleChildScrollViewExample(),
+                  ),
+                );
+              },
+              child: const Text('Show SingleChildScrollView Example'),
+            ),
           ],
         ),
       ),
@@ -408,6 +419,48 @@ class _RadioExampleState extends State<RadioExample> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SingleChildScrollViewExample extends StatelessWidget {
+  const SingleChildScrollViewExample({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTextStyle(
+      style: Theme.of(context).textTheme.bodyMedium!,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: viewportConstraints.maxHeight,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Container(
+                    // A fixed-height child.
+                    color: const Color(0xffeeee00), // Yellow
+                    height: 120.0,
+                    alignment: Alignment.center,
+                    child: const Text('Fixed Height Content'),
+                  ),
+                  Container(
+                    // Another fixed-height child.
+                    color: const Color(0xff008000), // Green
+                    height: 120.0,
+                    alignment: Alignment.center,
+                    child: const Text('Fixed Height Content'),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
